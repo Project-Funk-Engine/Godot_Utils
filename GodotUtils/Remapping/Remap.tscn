@@ -1,0 +1,110 @@
+[gd_scene load_steps=2 format=3 uid="uid://ceb5ipmce3uc"]
+
+[ext_resource type="Script" uid="uid://cx3dep0catiaw" path="res://Remapping/Remap.gd" id="1_q0dcm"]
+
+[node name="Remap" type="CanvasLayer" node_paths=PackedStringArray("tabs", "keyboard_container", "controller_container", "return_button", "countdown_cont", "countdown_label")]
+process_mode = 3
+script = ExtResource("1_q0dcm")
+registered_inputs = Array[String](["cancel", "axis_test"])
+tabs = NodePath("Control/MarginContainer/Panel")
+keyboard_container = NodePath("Control/MarginContainer/Panel/KEYBOARD_REMAP/ScrollContainer/VBoxContainer")
+controller_container = NodePath("Control/MarginContainer/Panel/CONTROLLER_REMAP/ScrollContainer/VBoxContainer")
+return_button = NodePath("Control/ReturnButton")
+countdown_cont = NodePath("Control/MarginContainer/CenterContainer")
+countdown_label = NodePath("Control/MarginContainer/CenterContainer/CountdownMargin/HBoxContainer/Label2")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 36
+
+[node name="Panel" type="TabContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+current_tab = 0
+
+[node name="KEYBOARD_REMAP" type="MarginContainer" parent="Control/MarginContainer/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+metadata/_tab_index = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/MarginContainer/Panel/KEYBOARD_REMAP"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/Panel/KEYBOARD_REMAP/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CONTROLLER_REMAP" type="MarginContainer" parent="Control/MarginContainer/Panel"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+metadata/_tab_index = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/MarginContainer/Panel/CONTROLLER_REMAP"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/Panel/CONTROLLER_REMAP/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="CountdownMargin" type="MarginContainer" parent="Control/MarginContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Control/MarginContainer/CenterContainer/CountdownMargin"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/CenterContainer/CountdownMargin"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/MarginContainer/CenterContainer/CountdownMargin/HBoxContainer"]
+layout_mode = 2
+text = "REMAP_WAITING"
+
+[node name="Label2" type="Label" parent="Control/MarginContainer/CenterContainer/CountdownMargin/HBoxContainer"]
+layout_mode = 2
+text = "999"
+horizontal_alignment = 1
+
+[node name="ReturnButton" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.5
+offset_top = -32.0
+offset_right = 35.5
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "RETURN"

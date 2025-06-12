@@ -19,7 +19,7 @@ func open_menu(prev_menu : Node) -> void:
 	prev = prev_menu
 	if prev_menu.has_method("pause_focus"):
 		prev_menu.pause_focus()
-	#grab focus to default
+	volume.grab_focus()
 		
 func return_to_prev() -> void:
 	if prev == null: return
@@ -30,6 +30,7 @@ func return_to_prev() -> void:
 #region Settings
 @export var volume : HSlider
 @export var language_selector : OptionButton
+@export var remap_button : Button
 
 func volume_changed(value : float) -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(value))
@@ -45,6 +46,11 @@ func _set_locales() -> void:
 		
 func _change_locale(idx : int) -> void:
 	TranslationServer.set_locale(TranslationServer.get_loaded_locales()[idx])
+	
+func _open_remap() -> void:
+	var remap_screen : Remap = load(Remap.Load_Path).instantiate()
+	add_child(remap_screen)
+	remap_screen.open_menu(self)
 #endregion
 	
 func _enter_tree() -> void:
@@ -52,4 +58,6 @@ func _enter_tree() -> void:
 	volume.value_changed.connect(volume_changed)
 	_set_locales()
 	language_selector.item_selected.connect(_change_locale)
+	volume.grab_focus.call_deferred()
+	remap_button.pressed.connect(_open_remap)
 	pass

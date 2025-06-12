@@ -2,10 +2,11 @@
 
 [ext_resource type="Script" uid="uid://8jub7senukwt" path="res://Menu/Settings_Menu.gd" id="1_7ipm2"]
 
-[node name="CanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("volume", "language_selector")]
+[node name="CanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("volume", "language_selector", "remap_button")]
 script = ExtResource("1_7ipm2")
 volume = NodePath("Control/CenterContainer/MarginContainer/MarginContainer/VBoxContainer/Volume")
 language_selector = NodePath("Control/CenterContainer/MarginContainer/MarginContainer/VBoxContainer/LanguageSelector")
+remap_button = NodePath("Control/CenterContainer/MarginContainer/MarginContainer/VBoxContainer/Remap")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -57,3 +58,7 @@ value = 1.0
 
 [node name="LanguageSelector" type="OptionButton" parent="Control/CenterContainer/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="Remap" type="Button" parent="Control/CenterContainer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "OPEN_REMAP"
