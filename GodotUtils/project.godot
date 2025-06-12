@@ -12,12 +12,26 @@ config_version=5
 
 config/name="Godot_Utils"
 run/main_scene="uid://n6k42tnjf7fw"
-config/features=PackedStringArray("4.4", "GL Compatibility")
+config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
+boot_splash/bg_color=Color(0.0962047, 0.0962048, 0.0962047, 1)
+boot_splash/image="uid://b5omw5sv7bhrc"
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/size/mode=2
+window/stretch/mode="canvas_items"
+window/stretch/scale_mode="integer"
 
 [dotnet]
 
 project/assembly_name="Godot_Utils"
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://Localization/Translations.cn.translation", "res://Localization/Translations.en.translation")
 
 [rendering]
 
